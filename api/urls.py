@@ -7,7 +7,7 @@ urlpatterns = [
     path('fridge/amounts/', FridgeOrderedList.as_view()),
     path('fridge/rat_leaderboard/', FridgeOrderedRatAmount.as_view()),
     path('fridge/<int:pk>/', FridgeDetail.as_view()),
-    path('fridge/rats/', FridgeRatList.as_view()),
+    path('fridge-rats/', FridgeRatList.as_view()),
     path('confection/', ConfectionList.as_view()),
     path('confection/<int:pk>/', ConfectionDetail.as_view()),
     path('rat/', RatList.as_view()),
