@@ -70,15 +70,16 @@ class FridgeRatCountSerializer(serializers.ModelSerializer):
         fields = ('fridge_name', 'date_added', 'fridge_manufacturer', 'fridge_volume', 'fridge_description', 'rat_count')
 
 
-class RatExtendedSerializer(serializers.ModelSerializer):
-    fridges = FridgeSerializer(many=True, read_only=True)
-
-    class Meta:
-        model = Rat
-        fields = ('rat_name', 'date_added', 'rat_species', 'rat_weight', 'rat_size', 'fridges')
-
-
 class ClaimedCheeseSerializer(serializers.ModelSerializer):
     class Meta:
         model = ClaimedCheese
         fields = ('fridge', 'rat', 'cheese_amount', 'cheese_type')
+
+
+class RatExtendedSerializer(serializers.ModelSerializer):
+    fridges = FridgeSerializer(many=True, read_only=True)
+    cheeses = ClaimedCheeseSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Rat
+        fields = ('rat_name', 'date_added', 'rat_species', 'rat_weight', 'rat_size', 'fridges', 'cheeses')
